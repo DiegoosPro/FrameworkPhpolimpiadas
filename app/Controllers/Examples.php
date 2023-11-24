@@ -6,20 +6,24 @@ use App\Libraries\GroceryCrud;
 
 class Examples extends BaseController
 {
-    public function deportistas_management()
-    {
-        $crud = new GroceryCrud();
+   /* public function deportistas_management()
+{
+    $crud = new GroceryCrud();
 
-        $crud->setTable('tab_deportistas');
-        $crud->setSubject('Deportista');
+    $crud->setTable('tab_deportistas');
+    $crud->setSubject('Deportista');
 
-        // Define las columnas a mostrar
-        $crud->columns(['IDDEPORTISTA', 'IDNACIONALIDAD', 'NOMBREDEPORTISTA', 'FECHANACIMIENTO', 'TELEFONO']);
+    // Define las columnas a mostrar
+    $crud->columns(['IDDEPORTISTA', 'NOMBREDEPORTISTA', 'FECHANACIMIENTO', 'TELEFONO']);
 
-        $output = $crud->render();
+    // Configura la relación de muchos a muchos para permitir múltiples nacionalidades por deportista
+    $crud->setRelationNtoN('IDNACIONALIDAD', 'tab_resultados', 'tab_nacionalidades', 'IDDEPORTISTA', 'IDNACIONALIDAD', 'NOMBRENACIONALIDAD');
 
-        return $this->_exampleOutput($output);
-    }
+    $output = $crud->render();
+
+    return $this->_exampleOutput($output);
+}*/
+
 
     public function ciudades_management()
     {
@@ -52,22 +56,27 @@ class Examples extends BaseController
     }
 
     public function eventos_management()
-{
-    $crud = new GroceryCrud();
+    {
+        $crud = new GroceryCrud();
+    
+        $crud->setTable('tab_eventos');
+        $crud->setSubject('Evento');
+    
+        // Define las columnas a mostrar
+        $crud->columns(['IDEVENTO', 'IDDEPORTE', 'IDSEDE', 'NOMBREEVENTO', 'FECHAEVENTO']);
+    
+        // Configura la relación para mostrar el nombre del deporte en lugar del ID
+        $crud->setRelation('IDDEPORTE', 'tab_deportes', 'NOMBREDEPORTE');
+    
+        // Configura la relación para mostrar el nombre de la sede en lugar del ID
+        $crud->setRelation('IDSEDE', 'tab_sedesolimpicas', 'NOMBRESEDE');
+    
+        $output = $crud->render();
+    
+        return $this->_exampleOutput($output);
+    }
+    
 
-    $crud->setTable('tab_eventos');
-    $crud->setSubject('Evento');
-
-    // Define las columnas a mostrar
-    $crud->columns(['IDEVENTO', 'IDDEPORTE', 'IDSEDE', 'NOMBREEVENTO', 'FECHAEVENTO']);
-
-    // Configura la relación para mostrar el nombre del deporte en lugar del ID
-    $crud->setRelation('IDDEPORTE', 'tab_deportes', 'NOMBREDEPORTE');
-
-    $output = $crud->render();
-
-    return $this->_exampleOutput($output);
-}
 
     public function nacionalidades_management()
     {
@@ -115,8 +124,26 @@ class Examples extends BaseController
     }
 
 
+    public function deportistas_management()
+{
+    $crud = new GroceryCrud();
 
+    $crud->setTable('tab_deportistas');
+    $crud->setSubject('Deportista');
 
+    // Define las columnas a mostrar
+    $crud->columns(['IDDEPORTISTA', 'NOMBREDEPORTISTA', 'FECHANACIMIENTO', 'TELEFONO']);
+
+    // Configura la relación para mostrar las nacionalidades asociadas a cada deportista
+    $crud->setRelationNtoN('IDDEPORTISTA', 'tab_deportistas_nacionalidades', 'tab_nacionalidades', 'IDDEPORTISTA', 'IDNACIONALIDAD', 'NOMBRENACIONALIDAD');
+
+    $output = $crud->render();
+
+    return $this->_exampleOutput($output);
+}
+
+    
+    
 
 
 
