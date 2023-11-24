@@ -7,116 +7,124 @@ use App\Libraries\GroceryCrud;
 class Examples extends BaseController
 {
     public function deportistas_management()
+    {
+        $crud = new GroceryCrud();
+
+        $crud->setTable('tab_deportistas');
+        $crud->setSubject('Deportista');
+
+        // Define las columnas a mostrar
+        $crud->columns(['IDDEPORTISTA', 'IDNACIONALIDAD', 'NOMBREDEPORTISTA', 'FECHANACIMIENTO', 'TELEFONO']);
+
+        $output = $crud->render();
+
+        return $this->_exampleOutput($output);
+    }
+
+    public function ciudades_management()
+    {
+        $crud = new GroceryCrud();
+
+        $crud->setTable('tab_ciudades');
+        $crud->setSubject('Ciudad');
+
+        // Define las columnas a mostrar
+        $crud->columns(['IDCIUDAD', 'NOMBRECIUDAD', 'PAIS']);
+
+        $output = $crud->render();
+
+        return $this->_exampleOutput($output);
+    }
+
+    public function deportes_management()
+    {
+        $crud = new GroceryCrud();
+
+        $crud->setTable('tab_deportes');
+        $crud->setSubject('Deporte');
+
+        // Define las columnas a mostrar
+        $crud->columns(['IDDEPORTE', 'NOMBREDEPORTE']);
+
+        $output = $crud->render();
+
+        return $this->_exampleOutput($output);
+    }
+
+    public function eventos_management()
 {
     $crud = new GroceryCrud();
 
-    $crud->setTable('tab_deportistas');
-    $crud->setSubject('Deportista');
+    $crud->setTable('tab_eventos');
+    $crud->setSubject('Evento');
     
     // Define las columnas a mostrar
-    $crud->columns(['IDDEPORTISTA', 'IDNACIONALIDAD', 'NOMBREDEPORTISTA', 'FECHANACIMIENTO', 'TELEFONO']);
+    $crud->columns(['IDEVENTO', 'IDDEPORTE', 'IDSEDE', 'NOMBREEVENTO', 'FECHAEVENTO']);
+
+    $output = $crud->render();
+
+    return $this->_exampleOutput($output);
+}
+public function nacionalidades_management()
+{
+    $crud = new GroceryCrud();
+
+    $crud->setTable('tab_nacionalidades');
+    $crud->setSubject('Nacionalidad');
+    
+    // Define las columnas a mostrar
+    $crud->columns(['IDNACIONALIDAD', 'NOMBRENACIONALIDAD']);
 
     $output = $crud->render();
 
     return $this->_exampleOutput($output);
 }
 
-    public function orders_management()
-    {
-        $crud = new GroceryCrud();
+public function resultados_management()
+{
+    $crud = new GroceryCrud();
 
-        $crud->setRelation('customerNumber', 'customers', '{contactLastName} {contactFirstName}');
-        $crud->displayAs('customerNumber', 'Customer');
-        $crud->setTable('orders');
-        $crud->setSubject('Order');
-        //$crud->unsetAdd();
-        //$crud->unsetDelete();
+    $crud->setTable('tab_resultados');
+    $crud->setSubject('Resultado');
+    
+    // Define las columnas a mostrar
+    $crud->columns(['IDRESULTADO', 'IDEVENTO', 'IDDEPORTISTA', 'POSICION', 'MARCATIEMPO', 'RONDA']);
 
-        $output = $crud->render();
+    $output = $crud->render();
 
-        return $this->_exampleOutput($output);
-    }
+    return $this->_exampleOutput($output);
+}
 
-    public function offices_management()
-    {
-        $crud = new GroceryCrud();
+public function sedes_management()
+{
+    $crud = new GroceryCrud();
 
-        $crud->setTheme('datatables');
-        $crud->setTable('offices');
-        $crud->setSubject('Office');
-        $crud->requiredFields(['city']);
-        $crud->columns(['city', 'country', 'phone', 'addressLine1', 'postalCode']);
-        $crud->setRead();
+    $crud->setTable('tab_sedesolimpicas');
+    $crud->setSubject('Sede Olímpica');
+    
+    // Define las columnas a mostrar
+    $crud->columns(['IDSEDE', 'IDCIUDAD', 'NOMBRESEDE', 'ANIOCELEBRACION']);
 
-        $output = $crud->render();
+    $output = $crud->render();
 
-        return $this->_exampleOutput($output);
-    }
-
-    public function products_management()
-    {
-        $crud = new GroceryCrud();
-
-        $crud->setTable('products');
-        $crud->setSubject('Product');
-        $crud->unsetColumns(['productDescription']);
-        $crud->callbackColumn('buyPrice', function ($value) {
-            return $value . ' &euro;';
-        });
-
-        $output = $crud->render();
-
-        return $this->_exampleOutput($output);
-    }
-
-    public function employees_management()
-    {
-        $crud = new GroceryCrud();
-
-        $crud->setTheme('datatables');
-        $crud->setTable('employees');
-        $crud->setRelation('officeCode', 'offices', 'city');
-        $crud->displayAs('officeCode', 'Office City');
-        $crud->setSubject('Employee');
-
-        $crud->requiredFields(['lastName']);
-
-        $output = $crud->render();
-
-        return $this->_exampleOutput($output);
-    }
-
-    public function film_management()
-    {
-        $crud = new GroceryCrud();
-
-        $crud->setTable('film');
-        $crud->setRelationNtoN('actors', 'film_actor', 'actor', 'film_id', 'actor_id', 'fullname');
-        $crud->setRelationNtoN('category', 'film_category', 'category', 'film_id', 'category_id', 'name');
-        $crud->unsetColumns(['special_features', 'description', 'actors']);
-
-        $crud->fields(['title', 'description', 'actors',  'category', 'release_year', 'rental_duration', 'rental_rate', 'length', 'replacement_cost', 'rating', 'special_features']);
-
-        $output = $crud->render();
-
-        return $this->_exampleOutput($output);
-    }
+    return $this->_exampleOutput($output);
+}
 
 
-    public function actors_management()
-    {
-        $crud = new GroceryCrud();
 
-        $crud->setTable('actor'); // Asegúrate de que el nombre de la tabla sea 'actor'
-        $crud->setSubject('Actor');
 
-        // Define las columnas a mostrar en la interfaz de gestión de actores
-        //$crud->columns(['actor_id', 'fullname', 'last_update']); // Define las columnas que quieres mostrar
 
-        $output = $crud->render();
 
-        return $this->_exampleOutput($output);
-    }
+
+
+
+
+
+
+
+
+
+
 
 
 

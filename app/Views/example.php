@@ -14,9 +14,9 @@
 	<div>
 		<a href='<?php echo base_url('deportistas_management') ?>'>Deportistas</a> |
 		<a href='<?php echo base_url('eventos_management') ?>'>Eventos</a> |
-		<a href='<?php echo base_url('sedesolimpicas_management') ?>'>Sedes Olímpicas</a> |
-		<a href='<?php echo base_url('ciudades_management') ?>'>Ciudades</a> |
 		<a href='<?php echo base_url('deportes_management') ?>'>Deportes</a> |
+		<a href='<?php echo base_url('sedes_management') ?>'>Sedes Olímpicas</a> |
+		<a href='<?php echo base_url('ciudades_management') ?>'>Ciudades</a> |
 		<a href='<?php echo base_url('resultados_management') ?>'>Resultados</a> |
 		<a href='<?php echo base_url('nacionalidades_management') ?>'>Nacionalidades</a> |
 		<a href='<?php echo base_url('usuarios_management') ?>'>Usuarios</a>
