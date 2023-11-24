@@ -12,13 +12,15 @@
 
 <body>
 	<div>
-		<a href='<?php echo base_url('customers_management') ?>'>Clientes</a> |
-		<a href='<?php echo base_url('orders_management') ?>'>Órdenes</a> |
-		<a href='<?php echo base_url('products_management') ?>'>Productos</a> |
-		<a href='<?php echo base_url('offices_management') ?>'>Oficinas</a> |
-		<a href='<?php echo base_url('employees_management') ?>'>Empleados</a> |
-		<a href='<?php echo base_url('film_management') ?>'>Películas</a>  |
-		<a href='<?php echo base_url('actors_management') ?>'>Actores</a>
+		<a href='<?php echo base_url('deportistas_management') ?>'>Deportistas</a> |
+		<a href='<?php echo base_url('eventos_management') ?>'>Eventos</a> |
+		<a href='<?php echo base_url('sedesolimpicas_management') ?>'>Sedes Olímpicas</a> |
+		<a href='<?php echo base_url('ciudades_management') ?>'>Ciudades</a> |
+		<a href='<?php echo base_url('deportes_management') ?>'>Deportes</a> |
+		<a href='<?php echo base_url('resultados_management') ?>'>Resultados</a> |
+		<a href='<?php echo base_url('nacionalidades_management') ?>'>Nacionalidades</a> |
+		<a href='<?php echo base_url('usuarios_management') ?>'>Usuarios</a>
+
 
 
 

@@ -6,16 +6,20 @@ use App\Libraries\GroceryCrud;
 
 class Examples extends BaseController
 {
-    public function customers_management()
-    {
-        $crud = new GroceryCrud();
+    public function deportistas_management()
+{
+    $crud = new GroceryCrud();
 
-        $crud->setTable('customers');
+    $crud->setTable('tab_deportistas');
+    $crud->setSubject('Deportista');
+    
+    // Define las columnas a mostrar
+    $crud->columns(['IDDEPORTISTA', 'IDNACIONALIDAD', 'NOMBREDEPORTISTA', 'FECHANACIMIENTO', 'TELEFONO']);
 
-        $output = $crud->render();
+    $output = $crud->render();
 
-        return $this->_exampleOutput($output);
-    }
+    return $this->_exampleOutput($output);
+}
 
     public function orders_management()
     {
@@ -100,19 +104,19 @@ class Examples extends BaseController
 
 
     public function actors_management()
-{
-    $crud = new GroceryCrud();
+    {
+        $crud = new GroceryCrud();
 
-    $crud->setTable('actor'); // Asegúrate de que el nombre de la tabla sea 'actor'
-    $crud->setSubject('Actor');
+        $crud->setTable('actor'); // Asegúrate de que el nombre de la tabla sea 'actor'
+        $crud->setSubject('Actor');
 
-    // Define las columnas a mostrar en la interfaz de gestión de actores
-    //$crud->columns(['actor_id', 'fullname', 'last_update']); // Define las columnas que quieres mostrar
+        // Define las columnas a mostrar en la interfaz de gestión de actores
+        //$crud->columns(['actor_id', 'fullname', 'last_update']); // Define las columnas que quieres mostrar
 
-    $output = $crud->render();
+        $output = $crud->render();
 
-    return $this->_exampleOutput($output);
-}
+        return $this->_exampleOutput($output);
+    }
 
 
 
