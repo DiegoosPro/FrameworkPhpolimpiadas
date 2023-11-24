@@ -57,58 +57,62 @@ class Examples extends BaseController
 
     $crud->setTable('tab_eventos');
     $crud->setSubject('Evento');
-    
+
     // Define las columnas a mostrar
     $crud->columns(['IDEVENTO', 'IDDEPORTE', 'IDSEDE', 'NOMBREEVENTO', 'FECHAEVENTO']);
 
-    $output = $crud->render();
-
-    return $this->_exampleOutput($output);
-}
-public function nacionalidades_management()
-{
-    $crud = new GroceryCrud();
-
-    $crud->setTable('tab_nacionalidades');
-    $crud->setSubject('Nacionalidad');
-    
-    // Define las columnas a mostrar
-    $crud->columns(['IDNACIONALIDAD', 'NOMBRENACIONALIDAD']);
+    // Configura la relación para mostrar el nombre del deporte en lugar del ID
+    $crud->setRelation('IDDEPORTE', 'tab_deportes', 'NOMBREDEPORTE');
 
     $output = $crud->render();
 
     return $this->_exampleOutput($output);
 }
 
-public function resultados_management()
-{
-    $crud = new GroceryCrud();
+    public function nacionalidades_management()
+    {
+        $crud = new GroceryCrud();
 
-    $crud->setTable('tab_resultados');
-    $crud->setSubject('Resultado');
-    
-    // Define las columnas a mostrar
-    $crud->columns(['IDRESULTADO', 'IDEVENTO', 'IDDEPORTISTA', 'POSICION', 'MARCATIEMPO', 'RONDA']);
+        $crud->setTable('tab_nacionalidades');
+        $crud->setSubject('Nacionalidad');
 
-    $output = $crud->render();
+        // Define las columnas a mostrar
+        $crud->columns(['IDNACIONALIDAD', 'NOMBRENACIONALIDAD']);
 
-    return $this->_exampleOutput($output);
-}
+        $output = $crud->render();
 
-public function sedes_management()
-{
-    $crud = new GroceryCrud();
+        return $this->_exampleOutput($output);
+    }
 
-    $crud->setTable('tab_sedesolimpicas');
-    $crud->setSubject('Sede Olímpica');
-    
-    // Define las columnas a mostrar
-    $crud->columns(['IDSEDE', 'IDCIUDAD', 'NOMBRESEDE', 'ANIOCELEBRACION']);
+    public function resultados_management()
+    {
+        $crud = new GroceryCrud();
 
-    $output = $crud->render();
+        $crud->setTable('tab_resultados');
+        $crud->setSubject('Resultado');
 
-    return $this->_exampleOutput($output);
-}
+        // Define las columnas a mostrar
+        $crud->columns(['IDRESULTADO', 'IDEVENTO', 'IDDEPORTISTA', 'POSICION', 'MARCATIEMPO', 'RONDA']);
+
+        $output = $crud->render();
+
+        return $this->_exampleOutput($output);
+    }
+
+    public function sedes_management()
+    {
+        $crud = new GroceryCrud();
+
+        $crud->setTable('tab_sedesolimpicas');
+        $crud->setSubject('Sede Olímpica');
+
+        // Define las columnas a mostrar
+        $crud->columns(['IDSEDE', 'IDCIUDAD', 'NOMBRESEDE', 'ANIOCELEBRACION']);
+
+        $output = $crud->render();
+
+        return $this->_exampleOutput($output);
+    }
 
 
 
