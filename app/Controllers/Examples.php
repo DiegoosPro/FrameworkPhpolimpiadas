@@ -6,7 +6,7 @@ use App\Libraries\GroceryCrud;
 
 class Examples extends BaseController
 {
-   /* public function deportistas_management()
+    public function deportistas_management()
 {
     $crud = new GroceryCrud();
 
@@ -14,15 +14,13 @@ class Examples extends BaseController
     $crud->setSubject('Deportista');
 
     // Define las columnas a mostrar
-    $crud->columns(['IDDEPORTISTA', 'NOMBREDEPORTISTA', 'FECHANACIMIENTO', 'TELEFONO']);
 
     // Configura la relación de muchos a muchos para permitir múltiples nacionalidades por deportista
-    $crud->setRelationNtoN('IDNACIONALIDAD', 'tab_resultados', 'tab_nacionalidades', 'IDDEPORTISTA', 'IDNACIONALIDAD', 'NOMBRENACIONALIDAD');
 
     $output = $crud->render();
 
     return $this->_exampleOutput($output);
-}*/
+}
 
 
     public function ciudades_management()
@@ -124,23 +122,7 @@ class Examples extends BaseController
     }
 
 
-    public function deportistas_management()
-{
-    $crud = new GroceryCrud();
-
-    $crud->setTable('tab_deportistas');
-    $crud->setSubject('Deportista');
-
-    // Define las columnas a mostrar
-    $crud->columns(['IDDEPORTISTA', 'NOMBREDEPORTISTA', 'FECHANACIMIENTO', 'TELEFONO']);
-
-    // Configura la relación para mostrar las nacionalidades asociadas a cada deportista
-    $crud->setRelationNtoN('IDDEPORTISTA', 'tab_deportistas_nacionalidades', 'tab_nacionalidades', 'IDDEPORTISTA', 'IDNACIONALIDAD', 'NOMBRENACIONALIDAD');
-
-    $output = $crud->render();
-
-    return $this->_exampleOutput($output);
-}
+    
 
     
     
